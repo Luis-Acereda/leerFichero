@@ -5,20 +5,28 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class App {
+public class Lectura {
 
-    public static void leerFichero(String ruta){
+    public static int leerFichero(String ruta){
 
         int contador = 0;
 
         File file = new File(ruta);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String linea;
-            while((linea = reader.readLine())!= null){
+            // String linea;
+            // while((linea = reader.readLine())!= null){
+            //     for(int i = 0; i < linea.length(); i++){
+            //         contador++;
+            //     }
+            // }
+
+            while(reader.read() != -1){
                 contador++;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return contador;
     }
 }
