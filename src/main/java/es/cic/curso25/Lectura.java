@@ -7,22 +7,16 @@ import java.io.IOException;
 
 public class Lectura {
 
-    public static int leerFichero(String ruta){
-
+    public static int leerFichero(String ruta) {
         int contador = 0;
 
         File file = new File(ruta);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            // String linea;
-            // while((linea = reader.readLine())!= null){
-            //     for(int i = 0; i < linea.length(); i++){
-            //         contador++;
-            //     }
-            // }
 
-            while(reader.read() != -1){
+            while (reader.read() != -1) {
                 contador++;
             }
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
