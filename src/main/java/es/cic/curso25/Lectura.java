@@ -10,15 +10,17 @@ public class Lectura {
     public static int leerFichero(String ruta) {
         int contador = 0;
 
-        File file = new File(ruta);
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File(ruta)))) {
 
             while (reader.read() != -1) {
                 contador++;
             }
-            
-        } catch (IOException e) {
-            e.printStackTrace();
+        
+        } catch (IOException ioe) {
+            throw new ConteoException(
+                String.format("Problema con el conteo del fichero %s", ruta),
+                ruta,
+                ioe);
         }
 
         return contador;
